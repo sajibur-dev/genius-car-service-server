@@ -29,11 +29,11 @@ function verifyJWT(req,res,next){
         if(err){
             return res.status(403).send({message:'forbiden'})
         }
-        console.log(decoded);
         req.decoded = decoded;
-    })
 
     next();
+    })
+
 }
 
 // connect to mondodb database
@@ -117,7 +117,6 @@ const run = async () => {
         app.post('/order',async(req,res)=>{
             const order = req.body;
             const result = await orderCollection.insertOne(order);
-            console.log('api heat')
             res.send(result);
         })
 
